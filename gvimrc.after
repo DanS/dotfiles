@@ -1,0 +1,109 @@
+"show invisible characters, set the colors to use for them"
+:set listchars=tab:▸\ ,trail:▝,eol:¬
+set list
+
+"Turn on command completion"
+filetype plugin on
+set ofu=syntaxcomplete#Complete
+
+"set laststatus=2 " Always display the statusline in all windows
+"set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+
+"Use ctrl-movement_keys to switch between windows"
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+"escape on jk"
+"inoremap jk <ESC>
+
+"Automatically clean fugitive files from the bufferlist"
+autocmd BufReadPost fugitive://* set bufhidden=delete
+
+"Change to normal mode when focus lost"
+au FocusLost,TabLeave * call feedkeys("\<C-\>\<C-n>")
+
+"turn on gitgutter (show changes from index version in gutter) by default"
+let g:gitgutter_enabled = 1
+
+"indent guides"
+"let g:indent_guides_auto_colors = 0
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=white ctermbg=3
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=gray96 ctermbg=4
+autocmd VimEnter, * :IndentGuidesEnable
+let g:indent_guides_color_change_percent = 3
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+
+"don't make backup files"
+set nobackup
+set nowritebackup
+set noswapfile
+
+"Mark maximum line length"
+set colorcolumn=101
+
+"set colorscheme"
+set background=light
+colorscheme solarized
+
+"airline config"
+  if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+  endif
+  let g:airline_left_sep = ''
+  let g:airline_left_alt_sep = ''
+  let g:airline_right_sep = ''
+  let g:airline_right_alt_sep = ''
+  let g:airline_symbols.branch = ''
+  let g:airline_symbols.readonly = ''
+  "let g:airline_symbols.linenr = ''
+  set guifont=Meslo\ LG\ M\ DZ\ Regular\ for\ Powerline:h12
+  set encoding=utf-8
+  let g:airline_theme = 'dark'
+  let g:airline_section_y = '' "turn off OS and encoding"
+
+"use haml file type for hamlc"
+au BufRead,BufNewFile *.hamlc set ft=haml
+au BufRead,BufNewFile *.hamlc.erb set ft=haml
+
+"use yaml file type for fdoc"
+au BufRead,BufNewFile *.fdoc set ft=yaml
+
+"use json file type for json"
+au BufRead,BufNewFile *.json set ft=json
+
+"enable syntastic with airline"
+  let g:airline#extensions#syntastic#enabled = 1
+
+"prevent syntastic/ tidy from complaining about valid angular tags"
+let g:syntastic_html_tidy_ignore_errors=[
+    \"proprietary attribute \"ng-",
+    \"proprietary attribute \"data-ng-",
+    \"trimming empty <i>",
+    \"trimming empty <span>",
+    \'<form> lacks "action" attribute',
+    \"<input> proprietary attribute \"autocomplete\"",
+    \"proprietary attribute \"role\"",
+    \"proprietary attribute \"hidden\"",
+\]
+
+let g:NERDTreeAutoCenter=0 "maybe keep NERDTree from scolling when it shouldn't
+let g:NERDTreeChDirMode=2  "Change current working directory to match NT root
+"augroup AuNERDTreeCmd  #don't auto open nerdtree for new buffers
+  "autocmd!
+"augroup end
+
+"get emmet vim to expand tags with shift-tab key (plain tab conflicts with you complete me"
+function! s:zen_html_tab()
+  let line = getline('.')
+  if match(line, '<.*>') >= 0
+    return "\<c-y>n"
+  endif
+    return "\<c-y>,"
+endfunction
+autocmd FileType html imap <buffer><expr><S-tab> <sid>zen_html_tab()
+
+"enable emmet for .html and .css only"
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
