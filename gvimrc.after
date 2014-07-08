@@ -1,3 +1,7 @@
+"list of vim plugins in .janus directory this is intended to work with"
+" YouCompleteMe, emmet-vim, powerline-fonts, tabular, tmuxline.vim, vim-airline, vim-angular,"
+" vim-gitgutter, vim-indent-guides, vim-rails, vim-sunburst,"
+
 "show invisible characters, set the colors to use for them"
 :set listchars=tab:▸\ ,trail:▝,eol:¬
 set list
@@ -75,18 +79,6 @@ au BufRead,BufNewFile *.json set ft=json
 
 "enable syntastic with airline"
   let g:airline#extensions#syntastic#enabled = 1
-
-"prevent syntastic/ tidy from complaining about valid angular tags"
-let g:syntastic_html_tidy_ignore_errors=[
-    \"proprietary attribute \"ng-",
-    \"proprietary attribute \"data-ng-",
-    \"trimming empty <i>",
-    \"trimming empty <span>",
-    \'<form> lacks "action" attribute',
-    \"<input> proprietary attribute \"autocomplete\"",
-    \"proprietary attribute \"role\"",
-    \"proprietary attribute \"hidden\"",
-\]
 
 let g:NERDTreeAutoCenter=0 "maybe keep NERDTree from scolling when it shouldn't
 let g:NERDTreeChDirMode=2  "Change current working directory to match NT root
