@@ -49,6 +49,7 @@ colorscheme solarized
 
 "highlight current line and cursor column"
 :hi CursorLine
+set  cursorline
 :nnoremap <Leader>c :set cursorline!<CR>
 
 "airline config"
