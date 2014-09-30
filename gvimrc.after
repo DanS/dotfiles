@@ -79,6 +79,8 @@ au BufRead,BufNewFile *.json set ft=json
 "prevent syntastic/ tidy from complaining about valid angular tags"
 let g:syntastic_html_tidy_ignore_errors=[
     \"proprietary attribute \"ng-",
+    \"proprietary attribute \"required",
+    \"proprietary attribute \"novalidate",
     \"proprietary attribute \"data-ng-",
     \"trimming empty <i>",
     \"trimming empty <span>",
