@@ -48,8 +48,8 @@ set background=light
 colorscheme solarized
 
 "highlight current line and cursor column"
-:hi CursorLine
-set  cursorline
+":hi CursorLine
+:set  cursorline
 :nnoremap <Leader>c :set cursorline!<CR>
 
 "airline config"
@@ -63,7 +63,7 @@ set  cursorline
   let g:airline_symbols.branch = ''
   let g:airline_symbols.readonly = ''
   "let g:airline_symbols.linenr = ''
-  set guifont=Meslo\ LG\ M\ DZ\ Regular\ for\ Powerline:h12
+  set guifont=Meslo\ LG\ M\ DZ\ Regular\ for\ Powerline:h14
   set encoding=utf-8
   let g:airline_theme = 'dark'
   let g:airline_section_y = '' "turn off OS and encoding"
@@ -114,3 +114,29 @@ autocmd FileType html imap <buffer><expr><S-tab> <sid>zen_html_tab()
 "enable emmet for .html and .css only"
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
+
+"position cursor when expanding html tags"
+function! Expander()
+  let line   = getline(".")
+  let col    = col(".")
+  let first  = line[col-2]
+  let second = line[col-1]
+  let third  = line[col]
+
+  if first ==# ">"
+    if second ==# "<" && third ==# "/"
+      return "\<CR>\<C-o>==\<C-o>O"
+
+    else
+      return "\<CR>"
+
+    endif
+
+  else
+    return "\<CR>"
+
+  endif
+
+endfunction
+
+inoremap <expr> <CR> Expander()
