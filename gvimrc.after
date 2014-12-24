@@ -16,7 +16,7 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 "escape on jk"
-"inoremap jk <ESC>
+inoremap jk <ESC>
 
 "Automatically clean fugitive files from the bufferlist"
 autocmd BufReadPost fugitive://* set bufhidden=delete
@@ -28,9 +28,6 @@ au FocusLost,TabLeave * call feedkeys("\<C-\>\<C-n>")
 let g:gitgutter_enabled = 1
 
 "indent guides"
-"let g:indent_guides_auto_colors = 0
-"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=white ctermbg=3
-"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=gray96 ctermbg=4
 autocmd VimEnter, * :IndentGuidesEnable
 let g:indent_guides_color_change_percent = 3
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
@@ -48,8 +45,7 @@ set background=light
 colorscheme solarized
 
 "highlight current line and cursor column"
-":hi CursorLine
-:set  cursorline
+":set  cursorline "turned off because it slows things too much
 :nnoremap <Leader>c :set cursorline!<CR>
 
 "airline config"
@@ -79,7 +75,7 @@ au BufRead,BufNewFile *.fdoc set ft=yaml
 au BufRead,BufNewFile *.json set ft=json
 
 "enable syntastic with airline"
-  let g:airline#extensions#syntastic#enabled = 1
+  "let g:airline#extensions#syntastic#enabled = 1
 
 "prevent syntastic/ tidy from complaining about valid angular tags"
 let g:syntastic_html_tidy_ignore_errors=[
@@ -116,27 +112,27 @@ let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
 
 "position cursor when expanding html tags"
-function! Expander()
-  let line   = getline(".")
-  let col    = col(".")
-  let first  = line[col-2]
-  let second = line[col-1]
-  let third  = line[col]
+"function! Expander()
+  "let line   = getline(".")
+  "let col    = col(".")
+  "let first  = line[col-2]
+  "let second = line[col-1]
+  "let third  = line[col]
 
-  if first ==# ">"
-    if second ==# "<" && third ==# "/"
-      return "\<CR>\<C-o>==\<C-o>O"
+  "if first ==# ">"
+    "if second ==# "<" && third ==# "/"
+      "return "\<CR>\<C-o>==\<C-o>O"
 
-    else
-      return "\<CR>"
+    "else
+      "return "\<CR>"
 
-    endif
+    "endif
 
-  else
-    return "\<CR>"
+  "else
+    "return "\<CR>"
 
-  endif
+  "endif
 
-endfunction
+"endfunction
 
-inoremap <expr> <CR> Expander()
+"inoremap <expr> <CR> Expander()
