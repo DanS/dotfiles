@@ -1,0 +1,113 @@
+:recipes:
+  :mac_os_x: '- osxdefaults::set_computer_name'
+:attributes:
+  :git:
+    :name: |
+      dan
+    :email: |
+      dan@generalthings.com
+  :osxdefaults:
+    :computername: |
+      mba-26763.local
+  :homebrewalt:
+    :apps:
+    - brew-cask
+    - cairo
+    - cscope
+    - elasticsearch
+    - fftw
+    - fontconfig
+    - freetype
+    - gdbm
+    - gettext
+    - glib
+    - gobject-introspection
+    - harfbuzz
+    - headers-more-nginx-module
+    - icu4c
+    - jpeg
+    - libevent
+    - libexif
+    - libffi
+    - libgsf
+    - libiconv
+    - libpng
+    - libtiff
+    - libxml2
+    - libxslt
+    - little-cms
+    - macvim
+    - nginx-full
+    - node
+    - openssl
+    - orc
+    - ossp-uuid
+    - pango
+    - pcre
+    - pixman
+    - pkg-config
+    - postgresql
+    - rabbitmq
+    - readline
+    - redis
+    - sqlite
+    - tmux
+    - vips
+    :cask_apps:
+    - Adobe Reader
+    - Anki
+    - Colors
+    - Cyberduck
+    - Dash
+    - DiffMerge
+    - Dropbox
+    - Firefox
+    - GitHub
+    - GitX
+    - Google Chrome
+    - HipChat
+    - ImageOptim
+    - Jing
+    - MacVim
+    - Mou
+    - Postgres
+    - Remote Desktop Connection
+    - RubyMine
+    - Screenhero
+    - ShiftIt
+    - Stay
+    - TextMate
+    - The Unarchiver
+    - VMware Fusion
+    - WebStorm
+    - pgAdmin3
+  :nodejs:
+    :apps:
+    - bower
+    - express-generator
+    - fsevents
+    - generator-angular
+    - generator-karma
+    - grunt
+    - grunt-cli
+    - gulp
+    - httpster
+    - istanbul
+    - jshint
+    - karma
+    - karma-chrome-launcher
+    - karma-coffee-preprocessor
+    - karma-firefox-launcher
+    - karma-html2js-preprocessor
+    - karma-jasmine
+    - karma-phantomjs-launcher
+    - karma-requirejs
+    - karma-script-launcher
+    - n
+    - nodemon
+    - npm
+    - protractor
+    - recursive-readdir
+    - requirejs
+    - yeoman
+    - yo
