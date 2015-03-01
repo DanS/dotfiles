@@ -16,7 +16,7 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 "escape on jk"
-inoremap jk <ESC>
+"inoremap jk <ESC>
 
 "Automatically clean fugitive files from the bufferlist"
 autocmd BufReadPost fugitive://* set bufhidden=delete
@@ -58,11 +58,13 @@ colorscheme solarized
   let g:airline_right_alt_sep = ''
   let g:airline_symbols.branch = ''
   let g:airline_symbols.readonly = ''
-  "let g:airline_symbols.linenr = ''
   set guifont=Meslo\ LG\ M\ DZ\ Regular\ for\ Powerline:h14
   set encoding=utf-8
-  let g:airline_theme = 'dark'
+  let g:airline_theme = 'sol'
+  let g:airline_colapse=1 "show only filename in inactive windows
   let g:airline_section_y = '' "turn off OS and encoding"
+  let g:airline_section_z = '%l: %c' "turn off percentage"
+  let g:airline_section_warning = '' "turn off sytax warnings"
 
 "use haml file type for hamlc"
 au BufRead,BufNewFile *.hamlc set ft=haml
@@ -93,6 +95,7 @@ let g:syntastic_html_tidy_ignore_errors=[
 
 let g:NERDTreeAutoCenter=0 "maybe keep NERDTree from scolling when it shouldn't
 let g:NERDTreeChDirMode=2  "Change current working directory to match NT root
+let g:NERDTreeStatusline=-1  "no statusline
 "augroup AuNERDTreeCmd  #don't auto open nerdtree for new buffers
   "autocmd!
 "augroup end
@@ -111,28 +114,34 @@ autocmd FileType html imap <buffer><expr><S-tab> <sid>zen_html_tab()
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
 
-"position cursor when expanding html tags"
-"function! Expander()
-  "let line   = getline(".")
-  "let col    = col(".")
-  "let first  = line[col-2]
-  "let second = line[col-1]
-  "let third  = line[col]
+"get ultilsnips to work with ycm http://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme"
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
-  "if first ==# ">"
-    "if second ==# "<" && third ==# "/"
-      "return "\<CR>\<C-o>==\<C-o>O"
+"let g:UltiSnipsExpandTrigger="<c-h>"
+"let g:UltiSnipsJumpForwardTrigger="<c-j>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
-    "else
-      "return "\<CR>"
+function! g:UltiSnips_Complete()
+    call UltiSnips#ExpandSnippet()
+    if g:ulti_expand_res == 0
+        if pumvisible()
+            return "\<C-n>"
+        else
+            call UltiSnips#JumpForwards()
+            if g:ulti_jump_forwards_res == 0
+               return "\<TAB>"
+            endif
+        endif
+    endif
+    return ""
+endfunction
 
-    "endif
-
-  "else
-    "return "\<CR>"
-
-  "endif
-
-"endfunction
-
-"inoremap <expr> <CR> Expander()
+au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+let g:UltiSnipsJumpForwardTrigger="<c-tab>"
+let g:UltiSnipsListSnippets="<c-e>"
+" this mapping Enter key to <C-y> to chose the current highlight item
+" and close the selection list, same as other IDEs.
+" CONFLICT with some plugins like tpope/Endwise
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"inoremap <expr> <CR> Expander()
