@@ -1,0 +1,8 @@
+"disable supertab, using YouCompleteMe instead"
+call janus#disable_plugin('supertab', 'using youcompleteme instead')
+call janus#disable_plugin('snipmate', 'using UltiSnips instead')
+
+set guifont=monaco:h12
+
+"disable backup files, avoids getting warnings after vim closed without save"
+set nobackup
