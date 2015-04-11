@@ -76,6 +76,9 @@ au BufRead,BufNewFile *.fdoc set ft=yaml
 "use json file type for json"
 au BufRead,BufNewFile *.json set ft=json
 
+"don't hide quotes when viewing json"
+let g:vim_json_syntax_conceal = 0
+
 "enable syntastic with airline"
   "let g:airline#extensions#syntastic#enabled = 1
 
@@ -115,33 +118,29 @@ let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
 
 "get ultilsnips to work with ycm http://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme"
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-
-"let g:UltiSnipsExpandTrigger="<c-h>"
+"let g:UltiSnipsExpandTrigger="<c-j>"
 "let g:UltiSnipsJumpForwardTrigger="<c-j>"
 "let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
-function! g:UltiSnips_Complete()
-    call UltiSnips#ExpandSnippet()
-    if g:ulti_expand_res == 0
-        if pumvisible()
-            return "\<C-n>"
-        else
-            call UltiSnips#JumpForwards()
-            if g:ulti_jump_forwards_res == 0
-               return "\<TAB>"
-            endif
-        endif
-    endif
-    return ""
-endfunction
+"function! g:UltiSnips_Complete()
+    "call UltiSnips#ExpandSnippet()
+    "if g:ulti_expand_res == 0
+        "if pumvisible()
+            "return "\<C-n>"
+        "else
+            "call UltiSnips#JumpForwards()
+            "if g:ulti_jump_forwards_res == 0
+               "return "\<TAB>"
+            "endif
+        "endif
+    "endif
+    "return ""
+"endfunction
 
-au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-let g:UltiSnipsJumpForwardTrigger="<c-tab>"
-let g:UltiSnipsListSnippets="<c-e>"
+"au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+"let g:UltiSnipsJumpForwardTrigger="<c-tab>"
+"let g:UltiSnipsListSnippets="<c-e>"
 " this mapping Enter key to <C-y> to chose the current highlight item
 " and close the selection list, same as other IDEs.
 " CONFLICT with some plugins like tpope/Endwise
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"inoremap <expr> <CR> Expander()
+"inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"inoremap <expr> <CR> Expander()
