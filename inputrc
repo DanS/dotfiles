@@ -1,0 +1,10 @@
+## settings for readline command completions
+set colored-stats on              #displays possible completions using colors to indicate file type
+set completion-ignore-case on     #ignore case when completing bash commands
+set completion-map-case on        #treats (‘-’) and (‘_’) as equivalent when completing
+set mark-symlinked-directories on #makes it easier to indentify symlinked directories
+set show-all-if-ambiguous on      #shows possible completions on first tab
+#TAB: menu-complete                #make tab cycle through completion choices
+#"\e[Z": "\e-1\C-i"                #make shift-tab cycle throught completion choices in reverse
+
+set editing-mode 'vi'
