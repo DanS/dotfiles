@@ -29,6 +29,8 @@ au FocusLost,TabLeave * call feedkeys("\<C-\>\<C-n>")
 
 "turn on gitgutter (show changes from index version in gutter) by default"
 let g:gitgutter_enabled = 1
+"prevent error when too many syntax/style errors
+let g:gitgutter_max_signs = 1000
 
 "indent guides"
 autocmd VimEnter, * :IndentGuidesEnable
@@ -41,7 +43,7 @@ set nowritebackup
 set noswapfile
 
 "Mark maximum line length"
-set colorcolumn=101
+set colorcolumn=81
 
 "set colorscheme"
 set background=light
@@ -68,6 +70,7 @@ colorscheme solarized
   let g:airline_section_y = '' "turn off OS and encoding"
   let g:airline_section_z = '%l: %c' "turn off percentage"
   let g:airline_section_warning = '' "turn off sytax warnings"
+  let g:airline_section_b = '' "turn off git branch info"
 
 "use haml file type for hamlc"
 au BufRead,BufNewFile *.hamlc set ft=haml
@@ -120,39 +123,23 @@ autocmd FileType html imap <buffer><expr><S-tab> <sid>zen_html_tab()
 let g:user_emmet_install_global = 0
 autocmd FileType html,css,hbs,jsx,javascript.jsx EmmetInstall
 
-"get ultilsnips to work with ycm http://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme"
-"let g:UltiSnipsExpandTrigger="<c-j>"
-"let g:UltiSnipsJumpForwardTrigger="<c-j>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-
-"function! g:UltiSnips_Complete()
-    "call UltiSnips#ExpandSnippet()
-    "if g:ulti_expand_res == 0
-        "if pumvisible()
-            "return "\<C-n>"
-        "else
-            "call UltiSnips#JumpForwards()
-            "if g:ulti_jump_forwards_res == 0
-               "return "\<TAB>"
-            "endif
-        "endif
-    "endif
-    "return ""
-"endfunction
-
-"au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-"let g:UltiSnipsJumpForwardTrigger="<c-tab>"
-"let g:UltiSnipsListSnippets="<c-e>"
-" this mapping Enter key to <C-y> to chose the current highlight item
-" and close the selection list, same as other IDEs.
-" CONFLICT with some plugins like tpope/Endwise
-"inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"inoremap <expr> <CR> Expander()
-
 "deal with React/ jsx syntax
 "from: https://jaxbot.me/articles/setting-up-vim-for-react-js-jsx-02-03-2015
 "also requires eslintrc file and following npm installs to work
 "  npm install -g eslint
 "  npm install -g babel-eslint
 "  npm install -g eslint-plugin-react
+"let g:syntastic_javascript_checkers = ['eslint']
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
-let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_checkers = ['jscs']
+
+"another attempt to get ycm and ultisnips to play together
+"" make YCM compatible with UltiSnips (using supertab)
+"let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
+"let g:ycm_key_list_previous_completion = ['<C-i>', '<Up>']
+"let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+"let g:UltiSnipsExpandTrigger = "<tab>"
+"let g:UltiSnipsJumpForwardTrigger = "<tab>"
+"let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"

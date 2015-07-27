@@ -1,7 +1,8 @@
-"disable supertab, using YouCompleteMe instead"
 call janus#disable_plugin('supertab', 'using youcompleteme instead')
+
+"disable narrow region, slows down open/close of NERDTree
 call janus#disable_plugin('Nrrwrgn', 'not used')
-"call janus#disable_plugin('snipmate', 'using UltiSnips instead')
+call janus#disable_plugin('snipmate', 'using UltiSnips instead')
 
 set guifont=monaco:h12
 
