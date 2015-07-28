@@ -1,1 +1,6 @@
-/Users/dsteinicke/.jscsrc
+{
+	"preset": "airbnb",
+  "esprima": "esprima-fb",
+  "requireSemicolons": true,
+  "fileExtensions": [".js", ".jsx"]
+}

@@ -1,1 +1,0 @@
-/Users/dsteinicke/.bash_profile
