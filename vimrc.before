@@ -1,8 +1,9 @@
 call janus#disable_plugin('supertab', 'using youcompleteme instead')
-
-"disable narrow region, slows down open/close of NERDTree
-call janus#disable_plugin('Nrrwrgn', 'not used')
 call janus#disable_plugin('snipmate', 'using UltiSnips instead')
+
+"prevent python error on start from non-terminal
+"https://github.com/Valloric/YouCompleteMe/issues/611
+let $PATH = '/usr/local/bin:'.$PATH
 
 set guifont=monaco:h12
 

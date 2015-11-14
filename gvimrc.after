@@ -1,3 +1,4 @@
+"
 "show invisible characters, set the colors to use for them"
 :set listchars=tab:▸\ ,trail:▝,eol:¬
 set list
@@ -14,9 +15,6 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-
-"unmap leader nr (narrow region) so it won't slow down NERDTree \n
-nunmap <leader>nr
 
 "escape on jk"
 "inoremap jk <ESC>
@@ -64,6 +62,7 @@ colorscheme solarized
   let g:airline_symbols.branch = ''
   let g:airline_symbols.readonly = ''
   set guifont=Meslo\ LG\ M\ DZ\ Regular\ for\ Powerline:h14
+  "set guifont=Sauce\ Code\ Powerline:h14
   set encoding=utf-8
   let g:airline_theme = 'sol'
   let g:airline_colapse=1 "show only filename in inactive windows
@@ -85,8 +84,14 @@ au BufRead,BufNewFile *.json set ft=json
 "don't hide quotes when viewing json"
 let g:vim_json_syntax_conceal = 0
 
+"add spaces after comment open characters, and before close characters"
+let g:NERDSpaceDelims = 1
+
+"promt for input when documenting functions
+let g:jsdoc_allow_input_prompt = 1
+
 "enable syntastic with airline"
-  let g:airline#extensions#syntastic#enabled = 1
+  "let g:airline#extensions#syntastic#enabled = 1
 
 "prevent syntastic/ tidy from complaining about valid angular tags"
 "let g:syntastic_html_tidy_ignore_errors=[
@@ -102,12 +107,13 @@ let g:vim_json_syntax_conceal = 0
     "\"proprietary attribute \"hidden\"",
 "\]
 
-let g:NERDTreeAutoCenter=0 "maybe keep NERDTree from scolling when it shouldn't
+"change gui bracket highlighting color to be different from cursor
+hi MatchParen cterm=bold guibg=yellow guifg=black
+
+" let g:NERDTreeAutoCenter=0 "maybe keep NERDTree from scolling when it shouldn't
 let g:NERDTreeChDirMode=2  "Change current working directory to match NT root
 let g:NERDTreeStatusline=-1  "no statusline
-"augroup AuNERDTreeCmd  #don't auto open nerdtree for new buffers
-  "autocmd!
-"augroup end
+:nnoremap <Leader>n :NERDTreeMirrorToggle<CR>
 
 "get emmet vim to expand tags with shift-tab key (plain tab conflicts with you complete me"
 function! s:zen_html_tab()
@@ -126,12 +132,17 @@ autocmd FileType html,css,hbs,jsx,javascript.jsx EmmetInstall
 "deal with React/ jsx syntax
 "from: https://jaxbot.me/articles/setting-up-vim-for-react-js-jsx-02-03-2015
 "also requires eslintrc file and following npm installs to work
+"  npm install -g jscs
 "  npm install -g eslint
 "  npm install -g babel-eslint
 "  npm install -g eslint-plugin-react
-"let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_aggregate_errors = 1
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
-let g:syntastic_javascript_checkers = ['jscs']
+let g:syntastic_javascript_checkers = ['eslint']
+
+"speed up linting
+"requires  npm install -g eslint_d
+let g:syntastic_javascript_eslint_exec = 'eslint_d'
 
 "another attempt to get ycm and ultisnips to play together
 "" make YCM compatible with UltiSnips (using supertab)

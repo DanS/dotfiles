@@ -1,6 +1,5 @@
 ---
 :repos:
-  delimitMate: git@github.com:Raimondi/delimitMate.git
   emmet-vim: https://github.com/mattn/emmet-vim.git
   powerline-fonts: https://github.com/Lokaltog/powerline-fonts.git
   syntastic: https://github.com/scrooloose/syntastic.git

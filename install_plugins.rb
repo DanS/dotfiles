@@ -1,6 +1,7 @@
 require 'yaml'
 
 if File.exist?('plugins.yaml')
+  `mkdir ~/.janus`
   plugins = YAML.load(File.open('plugins.yaml','r').read())
   plugins[:repos].each do |name, url|
     puts 'cloning ' + name
