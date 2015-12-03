@@ -29,9 +29,9 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
-nvm alias default 2.3.1
 export NVM_DIR="/Users/dsteinicke/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+nvm alias default 2.3.1
 
 #use command completion for git commands and branches
 if [ -f ~/.git-completion.bash ]; then
