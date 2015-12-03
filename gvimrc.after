@@ -113,7 +113,13 @@ hi MatchParen cterm=bold guibg=yellow guifg=black
 " let g:NERDTreeAutoCenter=0 "maybe keep NERDTree from scolling when it shouldn't
 let g:NERDTreeChDirMode=2  "Change current working directory to match NT root
 let g:NERDTreeStatusline=-1  "no statusline
+
+"NERDTreetab config
 :nnoremap <Leader>n :NERDTreeMirrorToggle<CR>
+let g:nerdtree_tabs_open_on_new_tab = 0
+
+" let g:jsdoc_allow_input_prompt = 0 "turns off interactive input
+let g:jsdoc_enable_es6 = 1 "turn on support for arrow function
 
 "get emmet vim to expand tags with shift-tab key (plain tab conflicts with you complete me"
 function! s:zen_html_tab()
