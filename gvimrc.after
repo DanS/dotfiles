@@ -116,7 +116,7 @@ let g:NERDTreeStatusline=-1  "no statusline
 
 "NERDTreetab config
 :nnoremap <Leader>n :NERDTreeMirrorToggle<CR>
-let g:nerdtree_tabs_open_on_new_tab = 0
+let g:nerdtree_tabs_open_on_new_tab = 0 "don't open NERDTree when switching tabs
 
 " let g:jsdoc_allow_input_prompt = 0 "turns off interactive input
 let g:jsdoc_enable_es6 = 1 "turn on support for arrow function

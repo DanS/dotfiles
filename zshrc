@@ -37,7 +37,7 @@ plugins=(git gem rake bundler brew osx rvm)
 set -o vi
 
 source $ZSH/oh-my-zsh.sh
-source ~/.bin/tmuxinator.zsh
+# source ~/.bin/tmuxinator.zsh
 
 # Customize to your needs...
 export PATH=/Users/dan/.rvm/gems/ruby-1.9.2-p290@gtcms/bin:/Users/dan/.rvm/gems/ruby-1.9.2-p290@global/bin:/Users/dan/.rvm/rubies/ruby-1.9.2-p290/bin:/Users/dan/.rvm/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/sbin:/Users/dan/.rvm/bin
@@ -50,3 +50,4 @@ export PATH="$HOME/.bin:$PATH"
 
 export PATH="$PATH:/usr/local/lib/node_modules"
 source $(brew --prefix nvm)/nvm.sh
+[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn

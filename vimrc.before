@@ -1,5 +1,5 @@
 call janus#disable_plugin('supertab', 'using youcompleteme instead')
-call janus#disable_plugin('snipmate', 'using UltiSnips instead')
+" call janus#disable_plugin('snipmate', 'using UltiSnips instead')
 
 "prevent python error on start from non-terminal
 "https://github.com/Valloric/YouCompleteMe/issues/611
