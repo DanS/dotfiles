@@ -1,8 +1,7 @@
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH=$HOME/local/bin:$PATH
 
 export DOCKER_TLS_VERIFY="1"
-export DOCKER_HOST="tcp://192.168.99.100:2376"
+export DOCKER_HOST="tcp://192.168.99.101:2376"
 export DOCKER_CERT_PATH="/Users/dsteinicke/.docker/machine/machines/dockervm"
 export DOCKER_MACHINE_NAME="dockervm"
 # Run this command to configure your shell for docker:
@@ -11,19 +10,19 @@ export DOCKER_MACHINE_NAME="dockervm"
 #avoid too many files error
 #ulimit -S -n 20000
 
-# Eternal bash history.
-# ---------------------
-# Undocumented feature which sets the size to "unlimited".
-# http://stackoverflow.com/questions/9457233/unlimited-bash-history
-export HISTFILESIZE=
-export HISTSIZE=
-export HISTTIMEFORMAT="[%F %T] "
-# Change the file location because certain bash sessions truncate .bash_history file upon close.
-# http://superuser.com/questions/575479/bash-history-truncated-to-500-lines-on-each-login
-export HISTFILE=~/.bash_eternal_history
-# Force prompt to write history after every command.
-# http://superuser.com/questions/20900/bash-history-loss
-PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+# # Eternal bash history. */
+# # --------------------- */
+# # Undocumented feature which sets the size to "unlimited". */
+# # http://stackoverflow.com/questions/9457233/unlimited-bash-history */
+# export HISTFILESIZE= */
+# export HISTSIZE= */
+# export HISTTIMEFORMAT="[%F %T] " */
+# # Change the file location because certain bash sessions truncate .bash_history file upon close. */
+# # http://superuser.com/questions/575479/bash-history-truncated-to-500-lines-on-each-login */
+# export HISTFILE=~/.bash_eternal_history */
+# # Force prompt to write history after every command. */
+# # http://superuser.com/questions/20900/bash-history-loss */
+# PROMPT_COMMAND="history -a; $PROMPT_COMMAND" */
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
@@ -31,7 +30,7 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 export NVM_DIR="/Users/dsteinicke/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-nvm alias default 2.3.1
+nvm alias default 5.7.0
 
 #use command completion for git commands and branches
 if [ -f ~/.git-completion.bash ]; then
@@ -51,6 +50,11 @@ fi
 docker_compose_fn() {
   docker-compose $1 $2 $3 $4 $5
 }
+
+docker_machine_fn() {
+  docker-machine $1 $2 $3 $4 $5
+}
+alias dm='docker_machine_fn'
 alias dc='docker_compose_fn'
 alias gb='git branch'
 alias gba='git branch -a'
@@ -65,8 +69,15 @@ alias begs='bundle exec guard start'
 alias be='bundle exec'
 alias locate='if [ $((`date +%s`-`eval $(stat -s /var/db/locate.database); echo $st_mtime`)) -gt 3600 ]; then echo "locate: db is too old!">/dev/stderr; sudo /usr/libexec/locate.updatedb; fi; locate -i'
 alias cdj='cd ~/Documents/code/jakarta'
-
-alias protractor='$(npm-which protractor)'
+alias cdlog='cd ~/Documents/code/jakarta/gopro-web-login'
+alias cdac='cd ~/Documents/code/jakarta/gopro-web-account-center'
+alias cdml='cd ~/Documents/code/jakarta/gopro-web-media-library'
+alias cdhs='cd ~/Documents/code/jakarta/gopro-web-hidden-shares'
+alias cdwrc='cd ~/Documents/code/jakarta/gopro-web-react-components'
+alias cdwjc='cd ~/Documents/code/jakarta/gopro-web-javascript-components'
+alias cdst='cd ~/Documents/code/jakarta/gopro-web-stylekit'
+alias cde2e='cd ~/Documents/code/jakarta/gopro-web-login-e2e'
+alias nsolid-env="source /usr/local/nsolid/nsolid-env"
 alias webdriver-manager='$(npm-which webdriver-manager)'
 
 git_branch(){
@@ -87,3 +98,9 @@ fi
 
 source ~/.rvm/scripts/rvm
 [[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
+
+# name terminal tabs with current directory stripping of the leading gopro or gopro-web
+# from here:https://gist.github.com/phette23/5270658
+if [ $ITERM_SESSION_ID ]; then
+  export PROMPT_COMMAND='echo -ne "\033];${PWD##*/}\007" | sed -E "s/gopro-(web-)?//" ;' ;
+fi

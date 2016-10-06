@@ -2,6 +2,7 @@
 :repos:
   emmet-vim: https://github.com/mattn/emmet-vim.git
   gitignore: https://github.com/vim-scripts/gitignore.git
+  MatchTagAlways: https://github.com/Valloric/MatchTagAlways.git
   powerline-fonts: https://github.com/Lokaltog/powerline-fonts.git
   syntastic: https://github.com/scrooloose/syntastic.git
   tabular: https://github.com/godlygeek/tabular.git

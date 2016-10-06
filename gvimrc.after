@@ -93,20 +93,6 @@ let g:jsdoc_allow_input_prompt = 1
 "enable syntastic with airline"
   "let g:airline#extensions#syntastic#enabled = 1
 
-"prevent syntastic/ tidy from complaining about valid angular tags"
-"let g:syntastic_html_tidy_ignore_errors=[
-    "\"proprietary attribute \"ng-",
-    "\"proprietary attribute \"required",
-    "\"proprietary attribute \"novalidate",
-    "\"proprietary attribute \"data-ng-",
-    "\"trimming empty <i>",
-    "\"trimming empty <span>",
-    "\'<form> lacks "action" attribute',
-    "\"<input> proprietary attribute \"autocomplete\"",
-    "\"proprietary attribute \"role\"",
-    "\"proprietary attribute \"hidden\"",
-"\]
-
 "change gui bracket highlighting color to be different from cursor
 hi MatchParen cterm=bold guibg=yellow guifg=black
 
@@ -129,16 +115,15 @@ function! s:zen_html_tab()
   endif
     return "\<c-y>,"
 endfunction
-autocmd FileType html imap <buffer><expr><S-tab> <sid>zen_html_tab()
+autocmd FileType html,js,javascript.jsx imap <buffer><expr><S-tab> <sid>zen_html_tab()
 
 "enable emmet for .html, .hbs and .css only"
-let g:user_emmet_install_global = 0
-autocmd FileType html,css,hbs,jsx,javascript.jsx EmmetInstall
+let g:user_emmet_install_global = 1
+" autocmd FileType html,css,hbs,js,javascript.jsx EmmetInstall
 
 "deal with React/ jsx syntax
 "from: https://jaxbot.me/articles/setting-up-vim-for-react-js-jsx-02-03-2015
 "also requires eslintrc file and following npm installs to work
-"  npm install -g jscs
 "  npm install -g eslint
 "  npm install -g babel-eslint
 "  npm install -g eslint-plugin-react
@@ -149,6 +134,17 @@ let g:syntastic_javascript_checkers = ['eslint']
 "speed up linting
 "requires  npm install -g eslint_d
 let g:syntastic_javascript_eslint_exec = 'eslint_d'
+
+"Highlight matching HTML tags
+let g:mta_set_default_matchtag_color = 0
+let g:mta_use_matchparen_group = 0
+highlight MatchTag ctermfg=black ctermbg=lightgreen guifg=black guibg=lightgreen
+let g:mta_filetypes = {
+      \ 'html' : 1,
+      \ 'xhtml' : 1,
+      \ 'xml' : 1,
+      \ 'javascript.jsx' : 1,
+      \}
 
 "another attempt to get ycm and ultisnips to play together
 "" make YCM compatible with UltiSnips (using supertab)
