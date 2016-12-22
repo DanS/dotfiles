@@ -118,8 +118,7 @@ endfunction
 autocmd FileType html,js,javascript.jsx imap <buffer><expr><S-tab> <sid>zen_html_tab()
 
 "enable emmet for .html, .hbs and .css only"
-let g:user_emmet_install_global = 1
-" autocmd FileType html,css,hbs,js,javascript.jsx EmmetInstall
+" let g:user_emmet_install_global = 1
 
 "deal with React/ jsx syntax
 "from: https://jaxbot.me/articles/setting-up-vim-for-react-js-jsx-02-03-2015
