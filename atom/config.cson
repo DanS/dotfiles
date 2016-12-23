@@ -1,0 +1,27 @@
+"*":
+  core:
+    disabledPackages: [
+      "linter"
+      "metrics"
+      "exception-reporting"
+    ]
+    telemetryConsent: "no"
+    themes: [
+      "atom-dark-ui"
+      "atom-dark-syntax"
+    ]
+  editor:
+    invisibles: {}
+  "exception-reporting": {}
+  "git-diff":
+    showIconsInEditorGutter: true
+  linter:
+    gutterPosition: "Left"
+    showErrorPanel: false
+    showProviderName: false
+  "linter-eslint": {}
+  "package-sync":
+    createOnChange: true
+    forceOverwrite: true
+  welcome:
+    showOnStartup: false

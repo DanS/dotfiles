@@ -1,0 +1,11 @@
+packages: [
+  "ex-mode"
+  "git-blame"
+  "highlight-selected"
+  "linter"
+  "linter-eslint"
+  "nerd-treeview"
+  "package-sync"
+  "set-syntax"
+  "vim-mode-plus"
+]
