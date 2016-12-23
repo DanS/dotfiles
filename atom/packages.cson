@@ -8,4 +8,5 @@ packages: [
   "package-sync"
   "set-syntax"
   "vim-mode-plus"
+  "webbox-color"
 ]
