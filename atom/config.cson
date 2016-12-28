@@ -1,4 +1,6 @@
 "*":
+  autosave:
+    enabled: true
   core:
     disabledPackages: [
       "linter"
@@ -19,7 +21,10 @@
     gutterPosition: "Left"
     showErrorPanel: false
     showProviderName: false
-  "linter-eslint": {}
+  "linter-eslint":
+    eslintrcPath: "~/.eslintrc"
+    lintHtmlFiles: true
+    useGlobalEslint: true
   "package-sync":
     createOnChange: true
     forceOverwrite: true
