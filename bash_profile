@@ -1,12 +1,5 @@
 export PATH=$HOME/local/bin:$PATH
 
-export DOCKER_TLS_VERIFY="1"
-export DOCKER_HOST="tcp://192.168.99.101:2376"
-export DOCKER_CERT_PATH="/Users/dsteinicke/.docker/machine/machines/dockervm"
-export DOCKER_MACHINE_NAME="dockervm"
-# Run this command to configure your shell for docker:
-# eval "$(docker-machine env dockervm)"
-
 #avoid too many files error
 #ulimit -S -n 20000
 
@@ -23,10 +16,6 @@ export DOCKER_MACHINE_NAME="dockervm"
 # # Force prompt to write history after every command. */
 # # http://superuser.com/questions/20900/bash-history-loss */
 # PROMPT_COMMAND="history -a; $PROMPT_COMMAND" */
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 export NVM_DIR="/Users/dsteinicke/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -111,7 +100,6 @@ fi
   #[ -r /etc/bashrc ] && . /etc/bashrc
 #fi
 
-source ~/.rvm/scripts/rvm
 [[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
 
 # name terminal tabs with current directory stripping of the leading gopro or gopro-web
@@ -119,4 +107,3 @@ source ~/.rvm/scripts/rvm
 if [ $ITERM_SESSION_ID ]; then
   export PROMPT_COMMAND='echo -ne "\033];${PWD##*/}\007" | sed -E "s/gopro-(web-)?//" ;' ;
 fi
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

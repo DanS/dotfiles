@@ -28,20 +28,10 @@ alias tks='tmux kill-server':
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 # COMPLETION_WAITING_DOTS="true"
 
-#switch to use .nvmrc version when changing directories
-export NVM_AUTO_USE=true
-
-# source ~/.zsh-nvm/zsh-nvm.plugin.zsh
-
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git gem rake bundler brew osx nvmzsh-nvm)
-
-# Use Heroku CLI's autocomplete
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
-fi
+plugins=(git gem rake bundler brew osx )
 
 # use vim key bindings, instead of the the default emacs
 set -o vi
@@ -50,19 +40,13 @@ source $ZSH/oh-my-zsh.sh
 # source ~/.bin/tmuxinator.zsh
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/sbin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/sbin:
 
 export EDITOR=mvim
 ulimit -S -n 2048
-
-# load rbenv automatically
-eval "$(rbenv init -)"
 
 export PATH="$HOME/.bin:$PATH"
 
 export PATH="$PATH:/usr/local/lib/node_modules"
 source $(brew --prefix nvm)/nvm.sh
-export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 [[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
