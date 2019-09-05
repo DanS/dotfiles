@@ -3,6 +3,11 @@
 :set listchars=tab:▸\ ,trail:▝,eol:¬
 set list
 
+" turn hybrid line numbers on
+:set number relativenumber
+:set nu rnu
+
+
 "Turn on command completion"
 filetype plugin on
 set ofu=syntaxcomplete#Complete
@@ -61,8 +66,8 @@ colorscheme solarized
   let g:airline_right_alt_sep = ''
   let g:airline_symbols.branch = ''
   let g:airline_symbols.readonly = ''
-  set guifont=Meslo\ LG\ M\ DZ\ Regular\ for\ Powerline:h14
-  "set guifont=Sauce\ Code\ Powerline:h14
+  set guifont=Input\ Mono:h14
+  " set guifont=Meslo\ LG\ M\ DZ\ Regular\ for\ Powerline:h14
   set encoding=utf-8
   let g:airline_theme = 'sol'
   let g:airline_colapse=1 "show only filename in inactive windows
